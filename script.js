@@ -52,7 +52,7 @@ let titleCapsIIFE = (function (arr) {
 console.log("\nTitle Caps using IIFE:");
 console.log(titleCapsIIFE);
 
-
+ 
 //c) Sum of all numbers in an array
 //annonymous function
 
@@ -76,46 +76,52 @@ let sum1=0;
 ([3,3,3,3,3])
 
 //d) Return all the prime numbers in an array
-//annonymous function
-let prime=[];
-let b=function (arr5){
-    for(let i=0; i<arr5.length; i++){
-        prime.push(arr5[i])
-    }
-    return prime;
-}
-b([3,5,7,11,13,17,19])
+// Anonymous function
+let primes = function (arr5) {
+    return arr5.filter(number => {
+        for (let i = 2; i < number; i++) {
+            if (number % i === 0) {
+                return false;
+            }
+        }
+        return number > 1;
+    });
+};
+console.log(primes([2, 3, 4, 5, 6, 7, 23]));
 
-//IIFE function
-let prime1=[];
-(function (arr6){
-    for(let i=0; i<arr6.length; i++){
-        prime1.push(arr6[i])
-    }
-    return prime1
-})
-([3,5,7,11,13,17,19])
+// IIFE function
+(function (arr6) {
+    let prime1 = arr6.filter(number => {
+        for (let i = 2; i < number; i++) {
+            if (number % i === 0) {
+                return false;
+            }
+        }
+        return number > 1;
+    });
+    console.log(prime1);
+})([2, 3, 4, 6, 7, 23]);
 
 //e) Return all the palindromes in an array
 //annonymous function
-let sum2=[];
-let pal=function (arr7){
-    for( let i=0; i<arr7.length; i++){
-        sum2.push(arr7[i])
-    }
-    return sum2
-}
-pal(["tat","dad","madam","radar","civic"])
+let pal = function (arr7) {
+    return arr7.filter(word => {
+        let reverse = word.split("").reverse().join("");
+        return word === reverse;
+    });
+};
+pal(["maths", "dad", "hi", "radar", "hello"]);
+
 
 //IIFE function
-let sum3=[];
 (function (arr8){
-    for(let i=0; i<arr8.length; i++){
-        sum3.push(arr8[i])
-    }
-    return sum3
+    let pal=arr8.filter(word => {
+        let reverse1=word.split("").reverse().join("")
+        return word===reverse1
+    })
+    console.log(pal)
 })
-(["tat","dad","madam","radar","civic"])
+((["maths","dad","hi","radar","hello"]))
 
 
 //f) Return median of two sorted arrays of the same size.
@@ -167,6 +173,8 @@ console.log(b1([2, 0, 3, 0, 5, 2].sort()));
 
 //h) Rotate an array by k times
 // anonymous function
+let array1 = [1, 2, 3];
+let k1 = 3;
 let rotateArrayAnonymous = function(arr, k) {
     const n = arr.length;
     k = k % n;
@@ -174,9 +182,6 @@ let rotateArrayAnonymous = function(arr, k) {
     arr.splice(0, 0, ...rotatedPart);
     return arr;
 };
-
-let array1 = [1, 2, 3, 4, 5];
-let k1 = 3;
 console.log("Rotated Array using anonymous function:", rotateArrayAnonymous(array1, k1));
 
 // IIFE function
@@ -227,26 +232,25 @@ let result4= (rra1)=>{
 console.log(result4([2,2,2,2,2]))
 
 //d) Return all the prime numbers in an array
-let prime2=[];
-let bc1=function (rra2){
-    for(let i=0; i<rra2.length; i++){
-        prime2.push(rra2[i])
+let prime1 = (arr5) => arr5.filter(number => {
+    for (let i = 2; i < number; i++) {
+        if (number % i === 0) {
+            return false;
+        }
     }
-    return prime2;
-}
-bc1([3,5,7,11,13,17,19])
+    return number > 1;
+});
 
-//e) Return all the palindromes in an array
+console.log(prime1([2, 3, 4, 5, 6, 7, 25,29]));
 
-let sum5=[];
-let pal1=(arr7)=>{
-    for( let i=0; i<arr7.length; i++){
-        sum5.push(arr7[i])
-    }
-    return sum5
-}
-pal1(["tat","dad","madam","radar","civic"])
-
+//e) return all the palindrom in an array
+let pal1 = function (arr7) {
+    return arr7.filter(word => {
+        let reverse = word.split("").reverse().join("");
+        return word === reverse;
+    });
+};
+console.log(pal1(["maths", "dad", "hi", "radar", "hello"]));
 
 
 
